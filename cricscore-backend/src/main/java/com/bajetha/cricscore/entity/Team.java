@@ -10,13 +10,13 @@ public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long teamId;
+    private Long teamId;
 
     @Column(nullable = false)
-    String teamName;
+    private String teamName;
 
-    String location;
+    private String location;
 
-    Long createdBy;
+    private Long createdBy;
 
 }

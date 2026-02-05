@@ -10,15 +10,15 @@ public class TeamPlayer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "team_id")
-    Team team;
+    private Team team;
 
     @ManyToOne
     @JoinColumn(name = "player_id")
-    Player player;
+    private Player player;
 
-    enum role {CAPTAIN,MEMBER};
+    private String role;
 }
