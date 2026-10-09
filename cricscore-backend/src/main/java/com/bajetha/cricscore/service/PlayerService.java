@@ -29,13 +29,13 @@ public class PlayerService {
     @Transactional
     public Player addPlayerToTeam(AddPlayerToTeamRequest request) {
 
-//        Team exists or not
+//          Team exists or not
         Team team = teamRepository.findById(request.getTeamId())
                 .orElseThrow(() -> new RuntimeException("Team not found"));
 
         Player player;
 
-//      if guest player
+//          If guest player
         if (request.isShadow()) {
             String dummyMobile = "SHADOW_" + UUID.randomUUID().toString().substring(0, 8);
             player = new Player();

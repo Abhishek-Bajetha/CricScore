@@ -3,7 +3,7 @@ package com.bajetha.cricscore.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -18,7 +18,7 @@ public class Match {
 
     private String venue;
 
-    private Date date;
+    private LocalDateTime date;
 
     private String status;
 

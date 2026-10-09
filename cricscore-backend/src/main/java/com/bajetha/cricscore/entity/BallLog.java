@@ -22,6 +22,8 @@ public class BallLog {
 
     private int extras;
 
+    private String extraType;
+
     @Column(nullable = true)
     private String wicketType;
 
@@ -29,6 +31,10 @@ public class BallLog {
     @JoinColumn(name = "match_id")
     @ManyToOne
     private Match match;
+
+    @ManyToOne
+    @JoinColumn(name = "wicket_player_id", nullable = true)
+    private Player wicketPlayer;
 
     @ManyToOne
     @JoinColumn(name = "striker_id")
