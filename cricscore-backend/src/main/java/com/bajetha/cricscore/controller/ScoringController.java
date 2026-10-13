@@ -17,7 +17,7 @@ public class ScoringController {
     @Autowired
     ScoringService scoringService;
 
-    @PostMapping("/ball")
+    @PostMapping("/recordBall")
     public ResponseEntity<?> scoringRequest(@RequestBody BallScoringRequest ballScoringRequest) {
         try {
             BallLog savedBall = scoringService.recordBall(ballScoringRequest);

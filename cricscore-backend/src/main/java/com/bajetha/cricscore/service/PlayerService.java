@@ -1,6 +1,7 @@
 package com.bajetha.cricscore.service;
 
 import com.bajetha.cricscore.dto.AddPlayerToTeamRequest;
+import com.bajetha.cricscore.dto.CreatePlayerRequest;
 import com.bajetha.cricscore.entity.Player;
 import com.bajetha.cricscore.entity.Team;
 import com.bajetha.cricscore.entity.TeamPlayer;
@@ -69,5 +70,21 @@ public class PlayerService {
 
         teamPlayerRepository.save(teamPlayer);
         return player;
+    }
+
+    public Player createPlayer(CreatePlayerRequest request) {
+        if(request.getMobileNumber() != null && !request.getMobileNumber().isBlank()){
+           if(playerRepository.findByMobileNumber(request.getMobileNumber()).isPresent()){
+                throw new RuntimeException("Number already registered");
+           }
+        }
+
+        Player player = new Player();
+        player.setName(request.getName());
+        player.setMobileNumber(request.getMobileNumber());
+        player.setEmail(request.getEmail());
+        player.setRegistered(true);
+
+        return playerRepository.save(player);
     }
 }

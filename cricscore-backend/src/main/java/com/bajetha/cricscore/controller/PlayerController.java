@@ -2,6 +2,7 @@ package com.bajetha.cricscore.controller;
 
 
 import com.bajetha.cricscore.dto.AddPlayerToTeamRequest;
+import com.bajetha.cricscore.dto.CreatePlayerRequest;
 import com.bajetha.cricscore.entity.Player;
 import com.bajetha.cricscore.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class PlayerController {
     @Autowired
     PlayerService playerService;
 
-    @PostMapping("/add-to-team")
+    @PostMapping("/addToTeam")
     public ResponseEntity<?> addPlayerToTeam(@RequestBody AddPlayerToTeamRequest request) {
 
         try {
@@ -33,5 +34,21 @@ public class PlayerController {
 
         }
     }
+    @PostMapping("/create")
+    public ResponseEntity<?> createPlayer(@RequestBody CreatePlayerRequest request) {
+
+        try {
+
+            Player savedPlayer = playerService.createPlayer(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedPlayer);
+
+        } catch (Exception e) {
+
+            return ResponseEntity.badRequest().body(e.getMessage());
+
+        }
+    }
+
+
 
 }

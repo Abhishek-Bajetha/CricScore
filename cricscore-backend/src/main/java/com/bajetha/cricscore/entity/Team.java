@@ -13,10 +13,12 @@ public class Team {
     private Long teamId;
 
     @Column(nullable = false)
+    private String shortName;
+
+    @Column(nullable = false)
     private String teamName;
 
     private String location;
 
     private Long createdBy;
-
 }
